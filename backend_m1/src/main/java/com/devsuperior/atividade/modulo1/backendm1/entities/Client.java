@@ -1,7 +1,7 @@
 package com.devsuperior.atividade.modulo1.backendm1.entities;
 
 import java.io.Serializable;
-import java.time.LocalDate;
+import java.time.Instant;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -25,13 +25,13 @@ public class Client implements Serializable{
 	private Double income;
 	
 	@JsonFormat(pattern = "dd-MM-yyyy")
-	private LocalDate birthDate;
+	private Instant birthDate;
 	private Integer children;
 	
 	public Client() {		
 	}
 	
-	public Client(Long id, String name, String cpf, Double income, LocalDate birthDate, Integer children) {
+	public Client(Long id, String name, String cpf, Double income, Instant birthDate, Integer children) {
 		this.id = id;
 		this.name = name;
 		this.cpf = cpf;
@@ -72,11 +72,11 @@ public class Client implements Serializable{
 		this.income = income;
 	}
 
-	public LocalDate getBirthDate() {
+	public Instant getBirthDate() {
 		return birthDate;
 	}
 
-	public void setBirthDate(LocalDate birthDate) {
+	public void setBirthDate(Instant birthDate) {
 		this.birthDate = birthDate;
 	}
 

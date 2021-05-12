@@ -1,21 +1,25 @@
 package com.devsuperior.atividade.modulo1.backendm1.dto;
 
 import java.io.Serializable;
-import java.time.LocalDate;
+import java.time.Instant;
 
 import com.devsuperior.atividade.modulo1.backendm1.entities.Client;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 public class ClientDTO implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 
+	@JsonIgnore
+	private Long id;
+	
 	private String name;
 	private String cpf;
 	private Double income;
-	private LocalDate birthDate;
+	private Instant birthDate;
 	private Integer children;
 	
-	public ClientDTO(String name, String cpf, Double income, LocalDate birthDate, Integer children) {
+	public ClientDTO(String name, String cpf, Double income, Instant birthDate, Integer children) {
 		this.name = name;
 		this.cpf = cpf;
 		this.income = income;
@@ -24,11 +28,16 @@ public class ClientDTO implements Serializable{
 	}
 	
 	public ClientDTO(Client client) {
+		this.id = client.getId();
 		this.name = client.getName();
 		this.cpf = client.getCpf();
 		this.income = client.getIncome();
 		this.birthDate = client.getBirthDate();
 		this.children = client.getChildren();
+	}
+	
+	public Long getId() {
+		return id;
 	}
 
 	public String getName() {
@@ -55,11 +64,11 @@ public class ClientDTO implements Serializable{
 		this.income = income;
 	}
 
-	public LocalDate getBirthDate() {
+	public Instant getBirthDate() {
 		return birthDate;
 	}
 
-	public void setBirthDate(LocalDate birthDate) {
+	public void setBirthDate(Instant birthDate) {
 		this.birthDate = birthDate;
 	}
 

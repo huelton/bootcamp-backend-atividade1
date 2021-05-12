@@ -41,7 +41,7 @@ public class ClientService {
 	@Transactional
 	public ClientDTO create(ClientDTO dto) {
 		Client entity = new Client();
-		entity.setName(dto.getName());
+		copyDtoToEntity(dto, entity);
 		clientRepository.save(entity);
 		return new ClientDTO(entity);
 	}
